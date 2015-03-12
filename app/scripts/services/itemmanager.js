@@ -834,7 +834,7 @@ angular.module('openMarketClientApp')
             set: "rabbi"
           },
           {
-            itemId: 32,
+            itemId: 31,
             quantity: 1,
             price: 0,
             set: "invitations"

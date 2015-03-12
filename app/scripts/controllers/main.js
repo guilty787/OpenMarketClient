@@ -18,7 +18,7 @@ angular.module('openMarketClientApp')
     console.info("algorithm start");
     var item = ItemManager.getItemById(41, false);
 
-    Graph.initializeItem(item);
+    Graph.findBestAverageRatingForItem(item);
 
     console.info(item);
   });

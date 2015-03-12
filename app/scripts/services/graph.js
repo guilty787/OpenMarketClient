@@ -47,12 +47,17 @@ angular.module('openMarketClientApp')
 
     var self = this;
 
-    this.initializeItem = function(item) {
+    this.findMinimumCostForItem = function (item) {
       self.assignExtremeValuesToItem(item, "purchaseCost", "minCost", true, false);
+    };
+
+    this.findBestAverageRatingForItem = function (item) {
       self.assignExtremeValuesToItem(item, "rating", "bestAvgRating", false, true);
-    }
+    };
 
     this.assignExtremeValuesToItem = function (rootItem, fieldName, extremeFieldName, isMin, useAverage) {
+
+      rootItem.chosenDependencies = [];
 
       if (rootItem.dependencies.length == 0) {
         rootItem[extremeFieldName] = rootItem[fieldName];
@@ -80,17 +85,25 @@ angular.module('openMarketClientApp')
           var setList = sets[setListName];
           var minMaxValue = -1;
           var value;
+          var chosenDependency = -1;
 
           for (var i = 0; i < setList.length; i++) {
             self.assignExtremeValuesToItem(setList[i], fieldName, extremeFieldName, isMin, useAverage);
 
             value = setList[i][extremeFieldName];
 
-            if (minMaxValue == -1 || ((isMin && value < minMaxValue) || (!isMin && value > minMaxValue)))
+            if (minMaxValue == -1 || ((isMin && value < minMaxValue) || (!isMin && value > minMaxValue))) {
               minMaxValue = value;
+              chosenDependency = setList[i].id;
+            }
+
           }
 
-          result += minMaxValue;
+          if (minMaxValue != -1) {
+            result += minMaxValue;
+
+            rootItem.chosenDependencies.push({setName: setListName, chosenItemId: chosenDependency});
+          }
         }
 
         if (useAverage)
