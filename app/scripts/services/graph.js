@@ -8,10 +8,11 @@
  * Service in the openMarketClientApp.
  */
 angular.module('openMarketClientApp')
-  .service('Graph', function () {
+  .service('Graph', function (ItemManager) {
 
 
-    this.findOptimalPath = function (item, options) {
+
+    this.findOptimalPath = function (itemId, options) {
 
 
     };
