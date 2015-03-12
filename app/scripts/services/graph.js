@@ -29,7 +29,7 @@ angular.module('openMarketClientApp')
 
     this.findBestPricePath = function (itemId) {
 
-      var item = ItemManager.getItemById(itemId);
+      var item = ItemManager.getItemById(itemId, true);
 
 
 

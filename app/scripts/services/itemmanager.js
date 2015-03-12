@@ -10,12 +10,15 @@
 angular.module('openMarketClientApp')
   .service('ItemManager', function ($http) {
 
-    this.getAllItems = function () {
-      return allItems;
+    this.getAllItems = function (deepCopy) {
+      deepCopy = deepCopy || false;
+
+      return deepCopy ? _.cloneDeep(allItems) : allItems;
     };
 
-    this.getItemById = function (id) {
-      return allItems[id - 1];
+    this.getItemById = function (id, deepCopy) {
+      deepCopy = deepCopy || false;
+      return deepCopy ? _.cloneDeep(allItems[id - 1]) : allItems[id - 1];
     }
 
 

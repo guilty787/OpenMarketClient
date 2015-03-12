@@ -14,7 +14,4 @@ angular.module('openMarketClientApp')
       'AngularJS',
       'Karma'
     ];
-
-    console.info(ItemManager.getAllItems());
-    console.info(ItemManager.getItemById(2));
   });
