@@ -18,7 +18,7 @@ angular.module('openMarketClientApp')
 
     this.getItemById = function (id, deepCopy) {
       deepCopy = deepCopy || false;
-      return deepCopy ? _.cloneDeep(allItems[id - 1]) : allItems[id - 1];
+      return allItems[id - 1];//deepCopy ? _.cloneDeep(allItems[id - 1]) : allItems[id - 1];
     }
 
 
